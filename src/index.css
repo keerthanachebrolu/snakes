@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #050505;
+  --color-cyan: #00f2ff;
+  --color-magenta: #ff00ff;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-white font-sans overflow-hidden;
+    background: radial-gradient(circle at center, #111 0%, #050505 100%);
+  }
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr 240px;
+  height: 100vh;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-border {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-border {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: var(--color-glass);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  @apply backdrop-blur-sm;
+}
+
+.track-item-active {
+  border-color: var(--color-magenta);
+  background: rgba(255, 0, 255, 0.05);
+}
+
+.score-value {
+  font-size: 84px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-cyan);
+  text-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+}
+
+.neon-glow-cyan {
+  box-shadow: 0 0 10px var(--color-cyan);
+}
+
+.neon-glow-magenta {
+  box-shadow: 0 0 15px var(--color-magenta);
+}
+
+.neon-glow-white {
+  box-shadow: 0 0 15px #fff;
+}
+
+/* Keep glitch for GlitchText component but update colors */
+@keyframes glitch {
+  0% { transform: translate(0); text-shadow: -2px 0 var(--color-magenta), 2px 0 var(--color-cyan); }
+  25% { transform: translate(-2px, 2px); text-shadow: -2px 0 var(--color-magenta), 2px 0 var(--color-cyan); }
+  50% { transform: translate(2px, -2px); text-shadow: 2px 0 var(--color-magenta), -2px 0 var(--color-cyan); }
+  75% { transform: translate(-2px, -2px); text-shadow: -2px 0 var(--color-magenta), 2px 0 var(--color-cyan); }
+  100% { transform: translate(0); text-shadow: -2px 0 var(--color-magenta), 2px 0 var(--color-cyan); }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
+
+
